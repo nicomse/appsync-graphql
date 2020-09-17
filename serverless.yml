@@ -1,0 +1,74 @@
+service:
+  name: poc-ws-graphql
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stackName: ${self:service}-${self:provider.stage}
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  iamRoleStatements: ${file(resources/iamRoleStatement.yml)}
+    
+  environment:
+    APPLICATION_TABLE: ${self:provider.stage}-paymentRequest
+    CONNECTIONS_TABLE: ${self:provider.stage}-connections
+    NOTIFICATIONS_TABLE: ${self:provider.stage}-notifications
+    USERS_TABLE: ${self:provider.stage}-users
+    API_REGION: "${self:provider.region}"  
+
+  # optional
+  websocketApiName: websocket-chat-${self:provider.stage}
+
+  # required for websocket apis
+  # this selects from your payload what your "routeKey" parameter is
+  # from the websocket event types on your function
+  websocketApiRouteSelectionExpression: $request.body.action
+
+plugins:
+  - serverless-websockets-plugin
+  - serverless-offline
+  - serverless-dynamodb-local
+
+functions:
+  connectHandler:
+    handler: src/sockets.$connect
+    description: "Controls new socket connections"
+    events:
+      - websocket:
+          route: $connect
+          routeKey: $connect
+
+  disconnectHandler:
+    handler: src/sockets.$disconnect
+    description: "Controls the disconnection event for sockets"
+    events:
+      - websocket:
+          route: $disconnect
+          routeKey: $disconnect
+
+  defaultHandler:
+    handler: src/sockets.$default
+    description: "Default handler for socket events"
+    events:
+      - websocket:
+          route: $default
+          routeKey: $default
+
+
+resources:
+  - ${file(resources/dynamoTables/paymentRequestTable.yml)}
+  - ${file(resources/dynamoTables/connectionsTable.yml)}
+  - ${file(resources/dynamoTables/notificationsTable.yml)}
+
+custom:
+  dynamodb:
+      stages: dev
+      start:
+        port: 8000
+        # set our custom DynamoDB port
+        migrate: true
+        # creates tables from serverless config
+package:
+  exclude:
+    - .dynamodb
+
