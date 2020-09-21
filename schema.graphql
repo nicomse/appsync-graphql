@@ -1,8 +1,7 @@
 # Define the model PaymentRequest
 type PaymentRequest {
   id: ID! # the primary partition key in DynamoDB
-  amount: String!
-
+  amount: String
 }
 # Define the queries
 type Query {
