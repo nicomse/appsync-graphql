@@ -1,0 +1,12 @@
+Type: AWS::DynamoDB::Table
+Properties:
+  TableName: ${self:service}-${self:provider.stage}-payment-requests-table # name of the table
+  AttributeDefinitions:
+    - AttributeName: id
+      AttributeType: S
+  KeySchema:
+    - AttributeName: id # partition key
+      KeyType: HASH
+  ProvisionedThroughput:
+    ReadCapacityUnits: 1
+    WriteCapacityUnits: 1

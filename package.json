@@ -11,7 +11,8 @@
   "dependencies": {
     "aws-sdk": "^2.753.0",
     "config": "^3.3.1",
-    "sanitize-html": "^1.27.4",
+    "serverless-appsync-offline": "^1.4.0",
+    "serverless-appsync-plugin": "^1.4.0",
     "serverless-dynamodb-local": "^0.2.35",
     "serverless-offline": "^6.7.0",
     "serverless-websockets-plugin": "^1.0.0",
