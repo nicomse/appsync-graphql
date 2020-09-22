@@ -1,15 +1,16 @@
 # Define the model PaymentRequest from the DB
 type PaymentRequest {
   id: ID! # the primary partition key in DynamoDB
+  payment_id: ID!
   shop_id: String!
-  payment_id: String!
   creation_date: String!
 }
 # Define the queries
 type Query {
   # list all PaymentRequest
   listPaymentRequest: [PaymentRequest]
-  getPaymentRequest: PaymentRequest
+  # get payment request
+  paymentRequest(id: ID!): PaymentRequest
 }
 # Define the input to create a PaymentRequest
 input PaymentRequestInput {
@@ -18,6 +19,7 @@ input PaymentRequestInput {
   name: String!
   description: String!
   quantity: Int!
+  shop_id: String!
   unit_price: [Amount]
 }
 
