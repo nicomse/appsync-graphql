@@ -1,12 +1,42 @@
 Type: AWS::DynamoDB::Table
 Properties:
-  TableName: ${self:service}-${self:provider.stage}-payment-requests-table # name of the table
+  TableName: ${self:service}-${self:provider.stage}-payment-requests-table
   AttributeDefinitions:
     - AttributeName: id
       AttributeType: S
+    - AttributeName: shop_id
+      AttributeType: S
+    - AttributeName: payment_id
+      AttributeType: S
+    - AttributeName: creation_date
+      AttributeType: N
   KeySchema:
-    - AttributeName: id # partition key
+    - AttributeName: id
       KeyType: HASH
+  GlobalSecondaryIndexes:
+    - IndexName: ShopIdIndex
+      KeySchema:
+        - AttributeName: shop_id
+          KeyType: HASH
+        - AttributeName: creation_date
+          KeyType: RANGE
+      Projection:
+        ProjectionType: ALL
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+    - IndexName: PaymentIdIndex
+      KeySchema:
+        - AttributeName: payment_id
+          KeyType: HASH
+      Projection:
+        ProjectionType: ALL
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
   ProvisionedThroughput:
     ReadCapacityUnits: 1
     WriteCapacityUnits: 1
+  TimeToLiveSpecification:
+    AttributeName: expiration_date
+    Enabled: false
