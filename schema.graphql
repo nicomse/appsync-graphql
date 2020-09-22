@@ -10,7 +10,7 @@ type Query {
   # list all PaymentRequest
   listPaymentRequest: [PaymentRequest]
   # get payment request
-  paymentRequest(id: ID!): PaymentRequest
+  getPaymentRequest(id: ID!): PaymentRequest
 }
 # Define the input to create a PaymentRequest
 input PaymentRequestInput {

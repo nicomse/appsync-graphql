@@ -27,6 +27,11 @@ custom:
         request: "list_payment_request/request.vtl"
         response: "list_payment_request/response.vtl"
       - dataSource: paymentRequestSource
+        type: Query
+        field: getPaymentRequest # from the query in schema.graphql
+        request: "get_payment_request/request.vtl"
+        response: "get_payment_request/response.vtl"  
+      - dataSource: paymentRequestSource
         type: Mutation
         field: createPaymentRequest # from the mutation in schema.graphql
         request: "put_payment_request/request.vtl"
