@@ -22,7 +22,7 @@ input PaymentRequestInput {
 }
 
 input Amount {
-  amount: Float!
+  value: Float!
   currency: String!
 }
 
