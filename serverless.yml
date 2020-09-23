@@ -23,9 +23,9 @@ custom:
     mappingTemplates:
       - dataSource: paymentRequestSource
         type: Query
-        field: listPaymentRequest # from the query in schema.graphql
-        request: "list_payment_request/request.vtl"
-        response: "list_payment_request/response.vtl"
+        field: getPaymentRequests # from the query in schema.graphql
+        request: "get_payment_requests/request.vtl"
+        response: "get_payment_requests/response.vtl"
       - dataSource: paymentRequestSource
         type: Query
         field: getPaymentRequest # from the query in schema.graphql
