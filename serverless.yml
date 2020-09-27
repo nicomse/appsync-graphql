@@ -14,7 +14,7 @@ plugins:
 custom:
   appSync: # appsync plugin configuration
     name: poc-ws-graphql${opt:developerStack, ''}
-    authenticationType: API_KEY # use API_KEY in this tutorial
+    authenticationType: API_KEY # use API_KEY
     dataSources:
       - type: AMAZON_DYNAMODB
         name: paymentRequestSource # name of the resource
