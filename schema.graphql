@@ -3,6 +3,9 @@ type PaymentRequest {
   id: ID! # the primary partition key in DynamoDB
   shop_id: ID!
   amount: Amount!
+  name: String!
+  description: String!
+  quantity: Int!
 }
 
 # the amount of the PaymentRequest to retrieve
