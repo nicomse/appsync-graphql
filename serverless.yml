@@ -36,6 +36,11 @@ custom:
         field: createPaymentRequest # from the mutation in schema.graphql
         request: "put_payment_request/request.vtl"
         response: "put_payment_request/response.vtl"
+      - dataSource: paymentRequestSource
+        type: Mutation
+        field: updatePaymentRequest # from the mutation in schema.graphql
+        request: "update_payment_request/request.vtl"
+        response: "update_payment_request/response.vtl"  
     schema: schema.graphql
   appsync-offline: # appsync-offline configuration
     port: 62222

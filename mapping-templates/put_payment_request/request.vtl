@@ -5,4 +5,5 @@
     "id": $util.dynamodb.toDynamoDBJson($util.autoId()),
   },
   "attributeValues" :$util.dynamodb.toMapValuesJson($ctx.args.input)
+  "creation_date" :$util.time.nowISO8601()
 }

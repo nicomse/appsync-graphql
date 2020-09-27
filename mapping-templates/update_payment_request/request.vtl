@@ -1,0 +1,15 @@
+{
+    "version" : "2017-02-28",
+    "operation" : "UpdateItem",
+    "key" : {
+        "id" : $util.dynamodb.toDynamoDBJson($context.arguments.id)
+    },
+    "update" : {
+        "expression" : "SET name = :name, quantity = :quantity, shop_id = :shop_id",
+        "expressionValues": {
+            ":name" : $util.dynamodb.toDynamoDBJson($context.arguments.name),
+            ":quantity" : $util.dynamodb.toDynamoDBJson($context.arguments.quantity),
+            ":shop_id" : $util.dynamodb.toDynamoDBJson($context.arguments.shop_id),
+        }
+    }
+}
