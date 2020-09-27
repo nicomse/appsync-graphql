@@ -1,7 +1,7 @@
 # Define the model PaymentRequest from the DB
 type PaymentRequest {
   id: ID! # the primary partition key in DynamoDB
-  shop_id: String
+  shop_id: String!
 }
 # Define the queries
 type Query {
@@ -13,15 +13,15 @@ type Query {
 # Define the input to create a PaymentRequest
 input PaymentRequestInput {
   # the amount of the PaymentRequest to create
-  amount: [Amount],
-  name: String
-  description: String
-  quantity: Int
-  shop_id: String
-  unit_price: [Amount]
+  amount: AmountInput!
+  name: String!
+  description: String!
+  quantity: Int!
+  shop_id: String!
+  unit_price: AmountInput!
 }
 
-input Amount {
+input AmountInput {
   value: Float!
   currency: String!
 }
@@ -29,13 +29,13 @@ input Amount {
 # Define the mutations
 type Mutation {
   # Create a PaymentRequest
-  createPaymentRequest(input: PaymentRequestInput): PaymentRequest
+  createPaymentRequest(input: PaymentRequestInput!): PaymentRequest
   # update payment request
-  updatePaymentRequest(id: ID!, input: PaymentRequestInput): PaymentRequest
+  updatePaymentRequest(id: ID!, input: PaymentRequestInput!): PaymentRequest
 }
 
 type Subscription {
-	onCreatePaymentRequests(input: PaymentRequestInput): PaymentRequest
+	onCreatePaymentRequests(input: PaymentRequestInput!): PaymentRequest
 		@aws_subscribe(mutations: ["createPaymentRequest"])
   onUpdatePaymentRequest(id: ID!): PaymentRequest
     @aws_subscribe(mutations: ["updatePaymentRequest"])
