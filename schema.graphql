@@ -29,13 +29,13 @@ input Amount {
 # Define the mutations
 type Mutation {
   # Create a PaymentRequest
-  createPaymentRequest(data: PaymentRequestInput): PaymentRequest
+  createPaymentRequest(input: PaymentRequestInput): PaymentRequest
   # update payment request
-  updatePaymentRequest(id: ID!, data: PaymentRequestInput): PaymentRequest
+  updatePaymentRequest(id: ID!, input: PaymentRequestInput): PaymentRequest
 }
 
 type Subscription {
-	onCreatePaymentRequests(data: PaymentRequestInput): PaymentRequest
+	onCreatePaymentRequests(input: PaymentRequestInput): PaymentRequest
 		@aws_subscribe(mutations: ["createPaymentRequest"])
   onUpdatePaymentRequest(id: ID!): PaymentRequest
     @aws_subscribe(mutations: ["updatePaymentRequest"])
