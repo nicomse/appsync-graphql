@@ -6,7 +6,7 @@ type PaymentRequest {
 # Define the queries
 type Query {
   # list all PaymentRequest
-  getPaymentRequests: [PaymentRequest]
+  getPaymentRequests(): [PaymentRequest]
   # get payment request
   getPaymentRequest(id: ID!): PaymentRequest
 }
