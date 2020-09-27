@@ -17,6 +17,6 @@
     "serverless-appsync-plugin": "^1.4.0",
     "serverless-dynamodb-local": "^0.2.39",
     "serverless-offline": "^6.7.0",
-    "serverless-websockets-plugin": "^1.0.0",
+    "serverless-websockets-plugin": "^1.0.0"
   }
 }
