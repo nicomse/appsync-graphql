@@ -12,8 +12,7 @@ type Query {
 }
 # Define the input to create a PaymentRequest
 input PaymentRequestInput {
-  # the amount of the PaymentRequest to create
-  amount: AmountInput!
+  amount: AmountInput! 
   name: String!
   description: String!
   quantity: Int!
@@ -21,6 +20,7 @@ input PaymentRequestInput {
   unit_price: AmountInput!
 }
 
+# the amount of the PaymentRequest to create
 input AmountInput {
   value: Float!
   currency: String!
