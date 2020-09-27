@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "<< tests not implemented yet>>",
+    "local": "sls appsync-offline start",
+    "dynamo-local": "sls dynamodb install && sls dynamodb start"
   },
   "author": "",
   "license": "ISC",
