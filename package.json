@@ -1,7 +1,12 @@
 {
   "name": "poc-ws-graphql",
   "version": "1.0.0",
-  "description": "",
+  "description": "graphql-appsync interpreter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicomse/appsync-graphql"
+  },
+  "keywords": ["graphql","appsync", "nodejs","aws"],
   "main": "index.js",
   "scripts": {
     "test": "<< tests not implemented yet>>",
