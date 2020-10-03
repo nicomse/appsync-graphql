@@ -1,4 +1,4 @@
-# AppSync POC
+# AppSync PoC
 
 
 ## Installation
